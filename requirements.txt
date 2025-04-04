@@ -11,3 +11,4 @@ dotenv
 passlib[bcrypt]
 pydantic[email]
 alembic
+pymongo

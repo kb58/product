@@ -2,6 +2,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
+from app.api.routes.application_routes import router as applications_router
+from app.api.routes.job_routes import router as jobs_router
 
 # Import your routes
 from app.api.routes import auth, users
@@ -23,6 +25,9 @@ app.add_middleware(
 # Register Routes
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 app.include_router(users.router, prefix="/users", tags=["Users"])
+app.include_router(applications_router)
+app.include_router(jobs_router)
+
 
 # Register Exception Handlers
 add_exception_handlers(app)
